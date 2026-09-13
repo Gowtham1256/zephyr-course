@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  zephyr_dev:
+    image: zephyr-dev:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BASE_IMAGE: ghcr.io/zephyrproject-rtos/zephyr-build:latest
+        UID: ${UID}
+        GID: ${GID}
+    container_name: zephyr_course
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    init: true
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    command: /bin/bash -lc "sleep infinity"
+    volumes:
+      - ${HOME}/test_ws:/workdir
+      - "/dev:/dev"
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}
+      - UID=${UID}
+      - GID=${GID}
+    tty: true
+    stdin_open: true
