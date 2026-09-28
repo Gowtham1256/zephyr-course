@@ -45,6 +45,8 @@ config LED_FADE_DURATION_MS
 
 menu "EXPERT SETTING"
 
+visible if ADVANCED_LED_SETTING
+
 config LED_DEBUGGING
     bool "Enable led debugging"
     default n
