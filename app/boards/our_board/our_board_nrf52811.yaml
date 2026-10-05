@@ -1,0 +1,15 @@
+identifier: our_board/nrf52811
+name: OUR-BOARD-NRF52811
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+ram: 24
+flash: 192
+supported:
+  - counter
+  - pwm
+  - netif:openthread
+  - gpio
+vendor: nordic
